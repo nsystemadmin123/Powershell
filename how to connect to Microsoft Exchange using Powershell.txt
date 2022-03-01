@@ -1,4 +1,4 @@
-Open powershell, right click run as administrator, and run the cmdlets below.
+Open PowerShell, right click run as administrator, and run the cmdlets below.
 
 Set-ExecutionPolicy RemoteSigned
 $UserCredential = Get-Credential

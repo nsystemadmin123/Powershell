@@ -1,0 +1,17 @@
+#Proceed by opening Powershell and Run as Administrator then execute the script below#
+set-executionpolicy unrestricted
+Set-ExecutionPolicy RemoteSigned
+#This will install the Microsoft Teams module and packages for managing Microsoft Teams from PowerShell#
+Install-Module -Name Microsoftteams
+Import-Module MicrosoftTeams
+#This will prompt you to enter your Admin credentials.Your account name and tenant id will be displayed after successful logon#
+connect-Microsoftteams
+
+#Give your team a display name and set the visibility to either public or private. In this example, the name of the team we would like to create will be called "softwareteam" and it will be "public"#
+New-Team -DisplayName "softwareteam" -Description "softwareteam" -Visibility Public
+#The GroupId will be displayed if the team was created without errors. If for example, you wish to add bulk users at a later time then run the command below to get the GroupID which will be required in the next step to add bulk users#
+Get-Team -DisplayName "softwareteam"
+Import-Csv -Path "C:\Members\groupmembers.csv" | foreach{Add-TeamUser -GroupId ba2fda36-3d56-4c1d-9f77-8c1c4583585e -User $_.UserPrincipalName}
+#If the above script runs successfully then no error messages will appear#
+Get-TeamUser -GroupId ba2fda36-3d56-4c1d-9f77-8c1c4583585e
+#You can run the above command immediately to display a list of all members who are currently in this team including the newly added members#

@@ -1,0 +1,12 @@
+#This is for initiating a connection to Azure Active Directory. If you receive an error message for example the term ‘connect-msolservice’ is not recognized as the name of a cmdlet
+then it means the Azure Activity Directory module is not installed. This can be installed using this command 'Install-Module -Name MSOnline'
+Connect-MsolService	
+#To view all licensed users across your tenant. Value will equal to 'True' if a user is licensed and 'False' if no license is assigned to a user# 
+Get-MsolUser -All
+#To retrieve a list of all available licenses in your Office 365 tenant#
+Get-MsolAccountSku
+#This will get a list of all users who are assigned a Microsft 365 Business Premium license for example#
+Get-MsolUser | Where-Object {($_.licenses).AccountSkuId -match "addnameoflicense"}
+#To export the list to csv file#
+Get-MsolUser | Where-Object {($_.licenses).AccountSkuId -match "addnameoflicense"} | Export-csv C:\licenses1.csv
+

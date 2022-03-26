@@ -1,0 +1,13 @@
+#Proceed by opening PowerShell and run as Administrator#
+#If you have already installed Exchange Online Management powershell module you can skip the pre-requisite steps and run the command below to connect to your Exchange online tenant#
+Connect-ExchangeOnline -UserPrincipalName cloudadmin@????microsoft.com
+#Enter command/syntax below to create an email distribution group called Cloud Admin and assign the owner#
+New-DistributionGroup -Name CloudAdmin -DisplayName CloudAdmin -PrimarySmtpAddress cloudadmin@????microsoft.com -ManagedBy Asilva@????microsoft.com
+#Below syntax will add 1 member to this existing mail group#
+Add-DistributionGroupMember "CloudAdmin" -Member "bsilva@????microsoft.com"
+#To save time and add multiple bulk users to this existing distribution group, create a CSV file, add one column "User" and include email addresses of all members to be added then save to a location you remember#
+Import-CSV "C:\Users\adm\OneDrive\Documents\Members1.csv" | ForEach {Add-DistributionGroupMember "CloudAdmin" -Member $_.User}
+#Below syntax to export distribution group members to a CSV file#
+Get-DistributionGroupMember "CloudAdmin" | Export-csv C:\Users\adm\OneDrive\Documents\Members1.csv
+#Enter command below to end the remote connected session#
+Exit-PSsession

@@ -1,0 +1,8 @@
+Administrators are tasked with monitoring Mailbox usage of users to ensure the mailbox size has not exceeded storage capacity limits. This could be the case for organisations that are enrolled on a Business Standard or Premium package for example where mailbox storage limit is 50gb. Once user/s have nearly reached full capacity Exchange Online will reject any incoming email and prohibit them from sending emails till old email messages have been deleted to bring the mailbox size below the size limit.
+
+An Administrator can run the Powershell commands below to get mailbox usage for Exchange users and alert them if required.
+
+#Open and run Powershell as Administrator then enter command below to connect to Exchange using your admin credentials.#
+Connect-ExchangeOnline -UserPrincipalName pbrown@xxxxxxxxxxxxx
+#This command will fetch all Exchange mailboxes and display the mailbox size for each Exchange user.#
+Get-Mailbox -ResultSize Unlimited | Get-MailboxStatistics | select DisplayName,TotalItemSize

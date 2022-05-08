@@ -1,0 +1,5 @@
+#Run Powershell as Administrator and run below command to connect to your O365/M365 tenant. Enter your credentials when prompted.#
+Connect-MsolService
+#Then run command below to get a detailed list of M365 users. Some of the information includes users full name, email address, license package assigned and the last time a user changed their password.#
+Get-MsolUser -All | select-object *
+

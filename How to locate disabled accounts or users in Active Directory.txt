@@ -1,0 +1,2 @@
+$This Powershell command performs a search to locate disabled users in Active Directory#
+Search-ADAccount -AccountDisabled -UsersOnly  

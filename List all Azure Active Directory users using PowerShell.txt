@@ -1,0 +1,2 @@
+#The below script lists all Azure Active Directory users/accounts and exports display name and user principle name attributes to a CSV file named 'users'. The CSV file will appear in 'C:\WINDOWS\system32 folder'
+Get-AzureADUser -All $true | where-Object {$_.ImmutableId -eq $null} | select DisplayName,UserPrincipalName | Export-CSV -Path .\users.csv

@@ -1,0 +1,8 @@
+#Open SharePoint Online Management Shell and enter command below. Ensure URL is set as the Tenant SharePoint Admin URL#
+Connect-SPOService -URL https://????????-admin.sharepoint.com/
+#Run the command below. Enter the new site URL and the account name of the new site owner. Set storage quota in GB and give the site a title.
+New-SPOSite -Url https://?????????.sharepoint.com/sites/staffshared -Owner superadmin@domain.com -StorageQuota 30 -Title "Staff Shared"
+#If the site is created successfully - it will appear under 'Active sites' in SharePoint Admin Center#
+#Run below command to disconnect from your SharePoint tenant#
+Disconnect-SPOService
+

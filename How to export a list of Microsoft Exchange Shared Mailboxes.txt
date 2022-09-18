@@ -1,0 +1,5 @@
+#Run the following commands to connect to Exchange Online and export a list of shared mailboxes in your Office 365 tenant. A text file named 'Shared Mailboxes will be created. It can be found here "C:\Windows\System32\SharedMailboxes.txt"#
+
+Connect-ExchangeOnline -UserPrincipalName username@domain.com
+Get-Recipient -RecipientTypeDetails SharedMailbox > SharedMailboxes.txt
+
